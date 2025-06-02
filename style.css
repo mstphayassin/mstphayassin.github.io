@@ -150,7 +150,7 @@ body {
   background: #ebf6ff;
   font: 20px/1.5 "Baskerville", "Times";
   font-weight: 300;
-  color: #5e2600;
+  color: #02005e;
   background-color: #ebf6ff;
 }
 
@@ -185,7 +185,7 @@ blockquote {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", sans-serif;
-  color: #5e2600;
+  color: #00215e;
   font-weight: 500;
   font-style: normal;
   padding: 0;
@@ -412,21 +412,21 @@ img {
 }
 
 .index-background-image-container {
-  background-image: url("/images/Pacific.jpg");
+  background-image: url("/images/headshot.png");
   /* Use the image from your front matter */
   background-size: cover;
   /* Cover the entire area */
   background-position: 50% 35%;
   /* Center the image */
-  height: 400px;
+  height: 200px;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
   border-radius: 30px;
 }
 
-.publications-background-image-container {
-  background-image: url("/images/Jupiter.jpg");
+.research-background-image-container {
+  background-image: url("/images/teton_dam_flood_newdale.jpg");
   /* Use the image from your front matter */
   background-size: cover;
   /* Cover the entire area */
