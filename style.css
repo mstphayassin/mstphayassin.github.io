@@ -14,17 +14,12 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 body {
@@ -152,11 +147,11 @@ html {
 }
 
 body {
-  background: #fff7eb;
+  background: #ebf6ff;
   font: 20px/1.5 "Baskerville", "Times";
   font-weight: 300;
-  color: #00215E;
-  background-color: #fff7eb;
+  color: #5e2600;
+  background-color: #ebf6ff;
 }
 
 @media (max-width: 768px) {
@@ -190,7 +185,7 @@ blockquote {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", sans-serif;
-  color: #00215E;
+  color: #5e2600;
   font-weight: 500;
   font-style: normal;
   padding: 0;
@@ -214,12 +209,12 @@ h1 a {
 h2 {
   font-size: 24px;
   padding-top: 15px;
-  border-bottom: 1px solid #FC4100;
+  border-bottom: 1px solid #0082fc;
 }
 
 h3 {
   font-size: 21px;
-  border-bottom: 1px solid #FC4100;
+  border-bottom: 1px solid #0082fc;
 }
 
 h4 {
@@ -239,14 +234,14 @@ p {
 a {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: #FC4100;
+  text-decoration-color: #0082fc;
   text-decoration-thickness: 1.25px;
   text-underline-offset: 2px;
   cursor: pointer;
 }
 a:hover, a:active {
-  color: #FC4100;
-  text-decoration-color: #FC4100;
+  color: #0082fc;
+  text-decoration-color: #0082fc;
 }
 
 ul, ol {
@@ -337,9 +332,9 @@ img {
   font-weight: 300;
   color: #00215E;
   cursor: pointer;
-  background-color: #fff7eb;
-  border-bottom: 0px solid #FC4100;
-  border-top: 0px solid #FC4100;
+  background-color: #ebf6ff;
+  border-bottom: 0px solid #0082fc;
+  border-top: 0px solid #0082fc;
   letter-spacing: 0px;
 }
 @media screen and (max-width: 640px) {
@@ -352,7 +347,7 @@ img {
 }
 .masthead .site-name a {
   text-decoration: underline;
-  text-decoration-color: #FC4100;
+  text-decoration-color: #0082fc;
   text-decoration-thickness: 2px;
 }
 .masthead .site-name::before {
@@ -380,8 +375,8 @@ img {
   }
 }
 .masthead nav a.active {
-  color: #FC4100;
-  text-decoration-color: #FC4100;
+  color: #0082fc;
+  text-decoration-color: #0082fc;
 }
 
 .education {
