@@ -14,14 +14,6 @@
     <meta property="og:title" content="Publications" />
     <meta property="twitter:title" content="Publications" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome-512x512.png">
-    <link rel="manifest" href="/favicon/site.webmanifest">
-    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="/favicon/favicon.ico">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
@@ -37,21 +29,20 @@
         rel="stylesheet">
     <!--script-->
     <script>
-        document.getElementById("pred_tool_form").addEventListener('input', function(){
+        update_pred_result = function (){
             var h = document.getElementById("dam-height").value;
             var v = document.getElementById("reservoir-volume").value;
-            document.getElementById("pred_tool_result").innerText=h
+            document.getElementById("pred_tool_result").innerText = "Dam Height: " + h + " m, Reservoir Volume: " + v + " m³";
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            // Set the initial value of the prediction result
+            update_pred_result();
+            document.getElementById("dam-height").addEventListener('input', update_pred_result);
+            document.getElementById("reservoir-volume").addEventListener('input', update_pred_result);
         });
     </script>
 
 </head>
-
-<!-- <div id="header-text-image">
-	<a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/40398609?s=460&u=649a510d0a195ffe63e78cab386c991cf821108d&v=4" /></a>
-	<div id="header-text">
-        <h1 class="site-name"><a href="/">Mustapha Yassin</a></h1>
-	</div>
-</div> -->
 
 
 <body>
