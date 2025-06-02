@@ -306,6 +306,14 @@ img {
   clear: both;
 }
 
+input[type=number] {
+    border: 0;
+    border-bottom: 2px solid #0082fc;
+    background: #d8ecfc;
+    font: 20px/1.6 "Baskerville", "Times";
+    width: 10%;
+}
+
 /*********************/
 /* LAYOUT / SECTIONS */
 /*********************/
