@@ -404,7 +404,7 @@ img {
   margin: 0;
 }
 .education .institution .date {
-  width: 10%;
+  width: 20%;
   text-align: right;
   font-size: 0.85em;
   white-space: nowrap;
@@ -419,10 +419,11 @@ img {
   background-position: 50% 35%;
   /* Center the image */
   height: 200px;
-  width: 100%;
+  width: 200px;
   padding: 20px;
   box-sizing: border-box;
   border-radius: 30px;
+  margin:auto;
 }
 
 .research-background-image-container {
