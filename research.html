@@ -55,8 +55,8 @@
 
 			<nav>
 			  <a href="/" class="">Home</a>
-			  <a href="/research" class="">Research</a>
-			  <a href="/publications" class="active">Publications</a>
+			  <a href="/research" class="active">Research</a>
+			  <a href="/publications" class="">Publications</a>
 			</nav>
         </header>
       </div>
@@ -64,14 +64,24 @@
 	
 	
 
-    <div id="main" role="main" class="container">
-      <article class="page">
+    <div id="main" role="main" class="container"> <article class="page">
 	Development in progress. Please check back later.
 
-    </div>
-</article>
+    <h2>Using Empirical Equations to Predict Dam Breach Characteristics</h2>
+    <p>This tool uses a variety of empirical equations for dam breach characteristics
+        as well as findings from my study evaluating and recalibrating these equations
+        to produce estimates for the <b>peak flow</b>, <b>time to failure</b>, and 
+        <b>breach width</b> of an embankment dam failure.
+    </p>
+    <p>To use the tool, please enter the required parameters below.</p>
+    <div class="form-container"> <form action="javascript:;" onsubmit="alert('demo')">
+        <label for="dam-height">Dam Height (m):</label>
+        <input type="number" id="dam-height" name="dam_height" required>
 
-    </div>
+        <label for="reservoir-volume">Reservoir Volume (m³):</label>
+        <input type="number" id="reservoir-volume" name="reservoir_volume" required>
+    </form> </div>
+</article> </div>
 
     <div class="wrapper-footer">
       <div class="container">
