@@ -35,6 +35,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
         rel="stylesheet">
+    <!--script-->
+    <script>
+        document.getElementById("pred_tool_form").addEventListener('input', function(){
+            var h = document.getElementById("dam-height").value;
+            var v = document.getElementById("reservoir-volume").value;
+            document.getElementById("pred_tool_result").innerText=h
+        });
+    </script>
 
 </head>
 
@@ -78,7 +86,7 @@
             </p>
             <p>To use the tool, please enter the required parameters below.</p>
             <div class="form-container">
-                <form action="javascript:;" onchange="document.getElementById('pred_tool_result').innerText=document.getElementById('dam-height').value">
+                <form id="pred_tool_form">
                     <label for="dam-height">Dam Height (m):</label>
                     <input type="number" id="dam-height" name="dam_height" value=5 required>
 
