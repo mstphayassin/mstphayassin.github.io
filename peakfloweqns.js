@@ -1,6 +1,7 @@
 var fr95_q = {
     "name": "Froehlich (1995)",
     "func": null,
+    "func_re": null,
     "description": "Placeholder description for Fr95_Q.",
     "mean": 0.2558,
     "stdev": 0.4828
