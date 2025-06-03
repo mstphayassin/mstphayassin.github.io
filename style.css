@@ -337,6 +337,12 @@ select {
     text-align: right;
 }
 
+.result-container {
+    background-color: #d8ecfc;
+    border: 2px solid #0082fc;
+    padding: 0 10px;
+}
+
 /*********************/
 /* LAYOUT / SECTIONS */
 /*********************/
