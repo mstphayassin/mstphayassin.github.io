@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Publications – Mustapha Yassin</title>
+    <title>Research – Mustapha Yassin</title>
 
     <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -11,8 +11,8 @@
 
     <meta name="author" content="Mustapha Yassin" />
 
-    <meta property="og:title" content="Publications" />
-    <meta property="twitter:title" content="Publications" />
+    <meta property="og:title" content="Research" />
+    <meta property="twitter:title" content="Research" />
 
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
@@ -66,39 +66,50 @@
             </p>
             <p>To use the tool, please enter the required parameters below.</p>
             <div class="form-container">
-                <form id="pred_tool_form">
-                    <label for="H-w">Height of water (m):</label>
-                    <input type="number" id="H-w" name="H-w" value=5 required>
-                    <br />
-                    <label for="V-w">Volume of water (m³):</label>
-                    <input type="number" id="V-w" name="V-w" value=30000 required>
-                    <br />
-                    <label for="erodibility">Erodibility:</label>
-                    <select id="erodibility" name="erodibility">
-                        <option value="low">Low</option>
-                        <option value="medium" selected>Medium</option>
-                        <option value="high">High</option>
-                    </select>
-                    <br />
-                    <select id="failure_mode" name="failure_mode">
-                        <option value="piping" >Piping/internal erosion</option>
-                        <option value="overtopping" selected>Overtopping</option>
-                    </select>
-                    <br />
-                    <label for="q-eqn-select">Peak Flow Equation:</label>
-                    <select id="q-eqn-select" name="q-equation">
-                        <option value="Xu09" selected>Xu and Zhang (2009)</option>
-                        <option value="Ho14">Hooshyaripor et al. (2014)</option>
-                        <option value="Az15">Azimi et al. (2015)</option>
-                        <option value="Fr16">Froehlich (2016)</option>
-                        <option value="Zh20">Zhang et al. (2020)</option>
-                        <option value="Ya25">Yassin et al. (2025)</option>
-                    </select>
-                    <em><div id="q-eqn-desc"></div></em>
-                </form>
+                <table width="100%">
+                    <form id="pred_tool_form">
+                        <tr>
+                            <td><label for="H-w">Height of water (m):</label></td>
+                            <td class="tool-input"><input type="number" id="H-w" name="H-w" value=5 required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="V-w">Volume of water (m³):</label></td>
+                            <td class="tool-input"><input type="number" id="V-w" name="V-w" value=30000 required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="erodibility">Erodibility:</label></td>
+                            <td class="tool-input"><select id="erodibility" name="erodibility">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td><label for="failure_mode">Failure Mode:</label></td>
+                            <td class="tool-input"><select id="failure_mode" name="failure_mode">
+                                <option value="piping" >Piping/internal erosion</option>
+                                <option value="overtopping" selected>Overtopping</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td><label for="q-eqn-select">Peak Flow Equation:</label></td>
+                            <td class="tool-input"><select id="q-eqn-select" name="q-equation">
+                                <option value="Xu09" selected>Xu and Zhang (2009)</option>
+                                <option value="Ho14">Hooshyaripor et al. (2014)</option>
+                                <option value="Az15">Azimi et al. (2015)</option>
+                                <option value="Fr16">Froehlich (2016)</option>
+                                <option value="Zh20">Zhang et al. (2020)</option>
+                                <option value="Ya25">Yassin et al. (2025)</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><em><div id="q-eqn-desc"></div></em></td>
+                        </tr>
+                    </form>
+                </table>
             </div>
             <br />
-            <p>The estimated peak flow is <b><div id="q-pred-result"></div></b> m³/s</p>
+            <p>The estimated peak flow is <b><span id="q-pred-result"></span></b> m³/s.</p>
             <p>Based on this equation's performance in Yassin et al. (2025), there is 95% confidence that
                 the true peak flow is less than <b><span id="q-upper-result"></span></b> m³/s.</p>
             <br />
