@@ -277,6 +277,13 @@ img {
   max-width: 100%;
 }
 
+.schematic img {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 .gmnoprint img {
   max-width: none;
 }
@@ -317,7 +324,7 @@ input[type=number] {
 
 select {
     border: 0;
-    width: 60%;
+    width: 80%;
     color: inherit;
     font: inherit;
     background: #d8ecfc;
