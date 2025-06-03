@@ -2,15 +2,19 @@ function get_peak_flow(dam) {
     var eqn = document.getElementById("q-eqn-select").value;
     if (eqn_map.has(eqn)) {
         var func = eqn_map.get(eqn).func;
+        if (dam.re) {
+            // use recalibrated equation if selected
+            func = eqn_map.get(eqn).func_re;
+        }
         if (func) {
             return func(dam);
         } else {
             console.warn("Equation function not implemented for: " + eqn);
-            return 0; // Return 0 or some default value if the equation is not implemented
+            return 0; // Return 0 if the equation is not implemented
         }
     } else {
         console.error("Unknown equation: " + eqn);
-        return 0; // Return 0 or some default value if the equation is unknown
+        return 0; // Return 0 if the equation is unknown
     }
 }
 
@@ -21,6 +25,7 @@ function update_pred_result() {
     var hd = document.getElementById("H-d").value;
     var hb = document.getElementById("H-b").value;
     var w = document.getElementById("width").value;
+    var use_recal = document.getElementById('q-use-recal').checked;
     if (!hd){
         hd = h
     }
@@ -31,6 +36,7 @@ function update_pred_result() {
         w = h * 2.6 // assumption based on average 2.6:1 side slopes
     }
     var q = get_peak_flow({
+        re: use_recal,
         H_w: parseFloat(h),
         V_w: parseFloat(v),
         H_b: parseFloat(hb),
@@ -51,8 +57,15 @@ function update_pred_result() {
     // Get the upper bound based on the selected equation's performance
     var eqn = document.getElementById("q-eqn-select").value;
     if (eqn_map.has(eqn)) {
-        var mean = eqn_map.get(eqn).mean;
-        var stdev = eqn_map.get(eqn).stdev;
+        var mean;
+        var stdev;
+        if (use_recal){
+            mean = eqn_map.get(eqn).mean_re;
+            stdev = eqn_map.get(eqn).stdev_re;
+        } else {
+            mean = eqn_map.get(eqn).mean;
+            stdev = eqn_map.get(eqn).stdev;
+        }
         // Note: the mean is negative because these means are pred/obs and we want obs/pred
         var upper_bound = q * 10**(-1.*mean + 1.645 * stdev); // one-sided 95% confidence interval
         if (upper_bound){
@@ -61,7 +74,7 @@ function update_pred_result() {
             document.getElementById("q-upper-result").innerText = "-";
         }
     } else {
-        document.getElementById("q-upper-result").innerText = "N/A";
+        document.getElementById("q-upper-result").innerText = "-";
     }
 }
 
@@ -89,6 +102,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("erodibility").addEventListener('input', update_pred_result);
     document.getElementById("failure-mode").addEventListener('input', update_pred_result);
     document.getElementById("dam-type").addEventListener('input', update_pred_result);
+    document.getElementById("q-use-recal").addEventListener('input', update_pred_result);
     document.getElementById("q-eqn-select").addEventListener('input', update_pred_result);
+
+    // Update equation description as well
     document.getElementById("q-eqn-select").addEventListener('input', update_eqn_desc);
 });
