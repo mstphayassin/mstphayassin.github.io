@@ -1,3 +1,27 @@
+var fr95_q = {
+    "name": "Froehlich (1995)",
+    "func": null,
+    "description": "Placeholder description for Fr95_Q.",
+    "mean": 0.2558,
+    "stdev": 0.4828
+}
+
+fr95_q.func = function(dam) {
+    return 0.607 * (dam.V_w**0.295) * (dam.H_w**1.24)
+}
+
+var we96_q = {
+    "name": "Webby (1996)",
+    "func": null,
+    "description": "Placeholder description for We96_Q.",
+    "mean": 0.1738,
+    "stdev": 0.4483
+}
+
+we96_q.func = (dam) => {
+    return 0.0443 * 9.81**0.5 * dam.V_w**0.365 * dam.H_w**1.40
+}
+
 var xu09_q = {
     "name": "Xu and Zhang (2009)",
     "func": null,
@@ -64,16 +88,35 @@ fr16_q.func = function(dam){
         kH = (dam.H_w / 6.1)**(1 / 8.0);
     }
     w = dam.H_w * 2.6; // THIS SHOULD BE AN INPUT
-    return 0.0175 * kM * kH * (9.81 * dam.V_w * dam.H_w * dam.H_w**2 / w)**0.5;
-    // supposed to be: 0.0175 kM kH (9.81 V_w H_w H_b^2 / W)^0.5
+    H_b = H_w // Assuming this for now
+    return 0.0175 * kM * kH * (9.81 * dam.V_w * dam.H_w * dam.H_b**2 / w)**0.5;
 }
 
 var zh20_q = {
     "name": "Zhang et al. (2020)",
     "func": null,
     "description": "Placeholder description for Zh20_Q.",
-    "mean": 0.0, // Placeholder mean
-    "stdev": 0.0 // Placeholder standard deviation
+    "mean": 0.0927,
+    "stdev": 0.4504
+}
+
+zh20_q.func = function(dam){
+    // homogenous
+    c0 = -1.58
+    c1 = -0.76
+    c2 = 0.10
+    c3 = -4.55
+    if (dam.type == 'corewall') {
+        c0 = -1.51
+        c1 = -1.09 
+        c2 = -0.12
+        c3 = -3.61
+    }
+    V_w = dam.V_w
+    H_w = dam.H_w
+    H_d = H_w // assuming this for now
+    H_b = H_w // assuming this for now
+    return 9.81**0.5 * V_w * H_w**-0.5 * (V_w**(1./3.) / H_w)**c0 * (H_w / H_b)**c1 * H_d**c2 * Math.exp(c3)
 }
 
 var ya25_q = {
@@ -95,9 +138,11 @@ ya25_q.func = function(dam) {
 // set up equation map of non-recalibrated equations
 // TODO: Implement the other equations
 const eqn_map = new Map();
+eqn_map.set("Fr95", fr95_q);
+eqn_map.set("We96", we96_q)
 eqn_map.set("Xu09", xu09_q);
 eqn_map.set("Ho14", ho14_q); // Placeholder for Hooshyaripor et al. (2014)
 eqn_map.set("Az15", az15_q); // Placeholder for Azimi et al. (2015)
 eqn_map.set("Fr16", fr16_q); // Placeholder for Froehlich (2016)
-eqn_map.set("Zh20", null); // Placeholder for Zhang et al. (2020)
+eqn_map.set("Zh20", zh20_q); // Placeholder for Zhang et al. (2020)
 eqn_map.set("Ya25", ya25_q); // Placeholder for Yassin et al. (2025)
