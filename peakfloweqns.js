@@ -22,8 +22,8 @@ var we96_q = {
     "name": "Webby (1996)",
     "func": null,
     "func_re": null,
-    "description": `This equation was created using the same dataset as Froehlich (1995), but it is dimensionally
-    homogenous and therefore more robust.`,
+    "description": `A simple, dimensionally homogenous equation that uses only height and volume of water, 
+    calibrated using simple linear regression. The form of this equation became the basis for subsequent models.`,
     "mean": 0.1738,
     "stdev": 0.4483,
     "mean_re": -0.0132,
@@ -42,10 +42,10 @@ var xu09_q = {
     "name": "Xu and Zhang (2009)",
     "func": null,
     "func_re": null,
-    "description": `Xu and Zhang (2009) developed a new equation that included discrete variables
+    "description": `A dimensionally homogenous equation that includes discrete variables
     as well as continuous variables, allowing the model to account for the effect of dam erodibility
     and failure mode of the dam. This is one of the only equations that includes an indication of the
-    erodibility of the dam, which is a key factor in the peak flow prediction.`,
+    erodibility of the dam, which is a key factor in accurately predicting the peak flow.`,
     "mean": 0.2136,
     "stdev": 0.4268,
     "mean_re": -0.0070,
@@ -85,9 +85,10 @@ var ho14_q = {
     "name": "Hooshyaripor et al. (2014)",
     "func": null,
     "func_re": null,
-    "description": `"This equation is developed using the same methodology as Webby (1996), but
-    the authors use a 3-dimensional copula to generate synthetic data for the model. However, the
-    effect of this has been found to be negligible with regard to model performance (Yassin et al. 2025).`,
+    "description": `A simple, dimensionally homogenous equation that uses only height and volume of water.
+    This equation uses a 3-dimensional Gaussian copula to generate synthetic data to assist in the 
+    calibration of the model, but Yassin et al. (2025) found that the effect of the copula on the model performance
+    is negligible.`,
     "mean": -0.0551,
     "stdev": 0.4381,
     "mean_re": -0.0155,
@@ -106,7 +107,10 @@ var az15_q = {
     "name": "Azimi et al. (2015)",
     "func": null,
     "func_re": null,
-    "description": `This model `,
+    "description": `A simple, dimensionally homogenous equation that uses only height and volume of water.
+    This equation was developed using a large dataset of dam failures and used cross-validation to ensure
+    that the model performance is robust. Yassin et al. (2025) found that this is one of the most accurate
+    models available, but it can still produce large errors.`,
     "mean": 0.1602,
     "stdev": 0.4393,
     "mean_re": -0.0132,
@@ -126,7 +130,12 @@ var fr16_q = {
     "name": "Froehlich (2016)",
     "func": null,
     "func_re": null,
-    "description": "Placeholder description for Fr16_Q.",
+    "description": `A more complicated equation that accounts for the mode of failure, as well as
+    the depth of the breach and the average embankment width. This equation
+    also includes a height factor that adjusts the peak flow for dams larger than 6.1 m, making this
+    the only equation to treat small and large dams differently. Despite this, Yassin et al. (2025)
+    found that none of these innovations significantly improved the model performance compared to
+    simpler models.`,
     "mean": 0.2234,
     "stdev": 0.4517,
     "mean_re": 0.0318,
@@ -161,7 +170,9 @@ var zh20_q = {
     "name": "Zhang et al. (2020)",
     "func": null,
     "func_re": null,
-    "description": "Placeholder description for Zh20_Q.",
+    "description": `This equation separates homogenous-fill and core-wall dams in its calibration,
+    which allows it to account for the different properties of these two types of dams. However, 
+    this does not significantly improve the model performance compared to simpler models (Yassin et al., 2025).`,
     "mean": 0.0927,
     "stdev": 0.4504,
     "mean_re": 0.0318,
@@ -212,7 +223,10 @@ var ya25_q = {
     "name": "Yassin et al. (2025)",
     "func": null,
     "func_re": null,
-    "description": "Placeholder description for Ya25_Q.",
+    "description": `This equation is based on the Xu and Zhang (2009) equation, but it uses
+    a larger dataset and simplifies the model somewhat by removing the factor for mode of failure
+    and factor for "low" erodibility. This equation is the most robust and accurate of the models,
+    but it is still prone to large errors in some cases.`,
     "mean": -0.0174,
     "stdev": 0.3635,
     "mean_re": -0.0174,
