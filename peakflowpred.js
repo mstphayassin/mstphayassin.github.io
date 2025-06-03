@@ -31,7 +31,8 @@ function update_pred_result() {
     if (eqn_map.has(eqn)) {
         var mean = eqn_map.get(eqn).mean;
         var stdev = eqn_map.get(eqn).stdev;
-        var upper_bound = q * 10**(mean + 1.645 * stdev); // one-sided 95% confidence interval
+        // Note: the mean is negative because these means are pred/obs and we want obs/pred
+        var upper_bound = q * 10**(-1.*mean + 1.645 * stdev); // one-sided 95% confidence interval
         document.getElementById("q-upper-result").innerText = upper_bound.toFixed(0);
     } else {
         document.getElementById("q-upper-result").innerText = "N/A";
