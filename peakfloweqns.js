@@ -2,7 +2,8 @@ var fr95_q = {
     "name": "Froehlich (1995)",
     "func": null,
     "func_re": null,
-    "description": "Placeholder description for Fr95_Q.",
+    "description": `An early equation that introduced multi-linear regression to this problem, 
+    outperforming earlier methods which used only simple linear regression. Prone to overestimating the peak flow.`,
     "mean": 0.2558,
     "stdev": 0.4828,
     "mean_re": -0.0831,
@@ -21,7 +22,8 @@ var we96_q = {
     "name": "Webby (1996)",
     "func": null,
     "func_re": null,
-    "description": "Placeholder description for We96_Q.",
+    "description": `This equation was created using the same dataset as Froehlich (1995), but it is dimensionally
+    homogenous and therefore more robust.`,
     "mean": 0.1738,
     "stdev": 0.4483,
     "mean_re": -0.0132,
@@ -40,7 +42,10 @@ var xu09_q = {
     "name": "Xu and Zhang (2009)",
     "func": null,
     "func_re": null,
-    "description": "Placeholder description for Xu09_Q.",
+    "description": `Xu and Zhang (2009) developed a new equation that included discrete variables
+    as well as continuous variables, allowing the model to account for the effect of dam erodibility
+    and failure mode of the dam. This is one of the only equations that includes an indication of the
+    erodibility of the dam, which is a key factor in the peak flow prediction.`,
     "mean": 0.2136,
     "stdev": 0.4268,
     "mean_re": -0.0070,
@@ -80,7 +85,9 @@ var ho14_q = {
     "name": "Hooshyaripor et al. (2014)",
     "func": null,
     "func_re": null,
-    "description": "Placeholder description for Ho14_Q.",
+    "description": `"This equation is developed using the same methodology as Webby (1996), but
+    the authors use a 3-dimensional copula to generate synthetic data for the model. However, the
+    effect of this has been found to be negligible with regard to model performance (Yassin et al. 2025).`,
     "mean": -0.0551,
     "stdev": 0.4381,
     "mean_re": -0.0155,
@@ -99,7 +106,7 @@ var az15_q = {
     "name": "Azimi et al. (2015)",
     "func": null,
     "func_re": null,
-    "description": "Placeholder description for Az15_Q.",
+    "description": `This model `,
     "mean": 0.1602,
     "stdev": 0.4393,
     "mean_re": -0.0132,
@@ -220,10 +227,8 @@ ya25_q.func = function(dam) {
     return 0.011 * kE * (9.81**0.5) * (dam.H_w**1.11) * (dam.V_w**0.46);
 }
 
-ya25_q.func_re = ya25_q.func
+ya25_q.func_re = ya25_q.func // recalibration is not available for this equation
 
-// set up equation map of non-recalibrated equations
-// TODO: Implement the other equations
 const eqn_map = new Map();
 eqn_map.set("Fr95", fr95_q);
 eqn_map.set("We96", we96_q);
