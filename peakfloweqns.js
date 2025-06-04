@@ -119,7 +119,7 @@ var fr16_q = {
     "name": "Froehlich (2016)",
     "func": null,
     "func_re": null,
-    "description": `A more complicated equation that accounts for the mode of failure, as well as the depth of the breach and the average embankment width. This equation also includes a height factor that adjusts the peak flow for dams larger than 6.1 m, making this the only equation to treat small and large dams differently. Despite this, Yassin et al. (2025) found that none of these innovations significantly improved the model performance compared to simpler models.`,
+    "description": `A more complicated equation that accounts for the mode of failure, as well as the depth of the breach and the average embankment width. This equation also includes a height factor that adjusts the peak flow for dams larger than 6.1 m, making this the only equation to treat smaller and larger dams differently. Despite this, Yassin et al. (2025) found that none of these innovations significantly improved the model performance compared to simpler models.`,
     "mean": 0.2234,
     "stdev": 0.4517,
     "mean_re": 0.0318,
