@@ -89,8 +89,42 @@ function update_eqn_desc() {
     }
 }
 
+function draw_chart() {
+    new Chartist.Line('#q-chart', {
+        labels: ['1', '2', '3', '4'],
+        series: [[1, 10, 100, 1000]]
+    }, {width: 400,
+        height: 300,
+        axisY:{scale:'log'},
+        axisX:{scale: 'log'},
+        plugins: [
+            Chartist.plugins.ctAxisTitle({
+                axisX: {
+                    axisTitle: 'X title',
+                    axisClass: 'ct-axis-title',
+                    offset: {
+                        x: 0,
+                        y: 30,
+                    },
+                    textAnchor: 'middle'
+                },
+                axisY: {
+                    axisTitle: 'Y title',
+                    axisClass: 'ct-axis-title',
+                    offset: {
+                        x: 0,
+                        y: 0
+                    },
+                    textAnchor: 'middle',
+                    flipTitle: false
+                    }
+                })
+        ]})
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     // Set the initial value of the prediction result
+    // draw_chart();
     update_pred_result();
     update_eqn_desc();
     // Add event listeners to input fields

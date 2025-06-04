@@ -27,12 +27,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
         rel="stylesheet">
+    <!--chartist-->
+    <link rel="stylesheet"href="bower_components/chartist/dist/chartist.min.css">
     <!--script-->
     <script src="peakfloweqns.js"></script>
     <script src="peakflowpred.js"></script>
-    <!--chartist-->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
 </head>
 
 
@@ -117,6 +116,7 @@
                             <td><label for="q-eqn-select">Peak flow equation:</label></td>
                             <td class="tool-input"><select id="q-eqn-select" name="q-equation">
                                 <option value="Fr95">Froehlich (1995)</option>
+                                <option value="We96">Webby (1996)</option>
                                 <option value="Xu09" selected>Xu and Zhang (2009)</option>
                                 <option value="Ho14">Hooshyaripor et al. (2014)</option>
                                 <option value="Az15">Azimi et al. (2015)</option>
@@ -143,6 +143,8 @@
                     the true peak flow is less than <b><span id="q-upper-result"></span></b> m³/s.</p>
             </div>
             <br />
+            <!--<div class="ct-chart ct-perfect-fourth" id="q-chart"></div>-->
+            <br />
             <br />
             <p><em>The reliability and accuracy of any results obtained from this tool 
                 should be carefully examined by experienced engineers. 
@@ -161,7 +163,9 @@
     </div>
 
 
-
+<script src="bower_components/chartist/dist/chartist.min.js"></script>
+<script src="bower_components/chartist/dist/chartist-logaxis-patch.js"></script>
+<script src="bower_components/chartist-plugin-axistitle/dist/chartist-plugin-axistitle.min.js"></script>
 </body>
 
 </html>

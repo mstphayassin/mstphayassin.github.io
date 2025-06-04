@@ -1,0 +1,13 @@
+{
+  "name": "mstphayassin.github.io",
+  "homepage": "https://github.com/mstphayassin/mstphayassin.github.io",
+  "authors": [
+    "mstphayassin <59064958+mstphayassin@users.noreply.github.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+    "chartist": "^0.11.4"
+  }
+}
