@@ -30,8 +30,8 @@
     <!--chartist-->
     <link rel="stylesheet"href="bower_components/chartist/dist/chartist.min.css">
     <!--script-->
-    <script src="peakfloweqns.js"></script>
-    <script src="peakflowpred.js"></script>
+    <script src="empiricaleqns.js"></script>
+    <script src="predupdate.js"></script>
 </head>
 
 
@@ -126,21 +126,36 @@
                             </select></td>
                         </tr>
                         <tr>
-                            <td><label for='q-use-recal'>Use recalibrated equation?</label></td>
-                            <td class="tool-input"><input type="checkbox" id="q-use-recal" name="q-use-recal"></td>
+                            <td colspan="2">Notes:<em><div id="q-eqn-desc"></div></em></td>
                         </tr>
                         <tr>
-                            <td colspan="2">Notes:<em><div id="q-eqn-desc"></div></em></td>
+                            <td><label for="t-eqn-select">Time to failure equation:</label></td>
+                            <td class="tool-input"><select id="t-eqn-select" name="t-equation">
+                                <option value="Fr95">Froehlich (1995)</option>
+                                <option value="Fr08">Froehlich (2008)</option>
+                                <option value="Xu09" selected>Xu and Zhang (2009)</option>
+                                <option value="Zh20">Zhong et al. (2020)</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Notes:<em><div id="t-eqn-desc"></div></em></td>
+                        </tr>
+                        <tr>
+                            <td><label for='use-recal'>Use recalibrated equation?</label></td>
+                            <td class="tool-input"><input type="checkbox" id="use-recal" name="use-recal"></td>
                         </tr>
                     </form>
                 </table>
             </div>
-            <b id="q-warning-msg"></b>
+            <b id="warning-msg"></b>
             <br />
             <div class="result-container">
                 <p>The estimated peak flow is <b><span id="q-pred-result"></span></b> m³/s.</p>
                 <p>Based on this equation's performance in Yassin et al. (2025), there is 95% confidence that
                     the true peak flow is less than <b><span id="q-upper-result"></span></b> m³/s.</p>
+                <p>The estimated time to failure is <b><span id="t-pred-result"></span></b>.</p>
+                <p>Based on this equation's performance in Yassin et al. (2025), there is 95% confidence that
+                    the true time to failure is larger than <b><span id="t-lower-result"></span></b>.</p>
             </div>
             <br />
             <!--<div class="ct-chart ct-perfect-fourth" id="q-chart"></div>-->

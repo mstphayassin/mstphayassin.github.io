@@ -194,18 +194,14 @@ zh20_q.func_re = function(dam){
         c2 = 1.45
         c3 = 0.08
     }
-    V_w = dam.V_w
-    H_w = dam.H_w
-    H_d = dam.H_d
-    H_b = dam.H_b
-    return c * 9.81**0.5 * H_w**c0 * V_w**c1 * H_b**c2 * H_d**c3
+    return c * 9.81**0.5 * dam.H_w**c0 * dam.V_w**c1 * dam.H_b**c2 * dam.H_d**c3
 }
 
 var ya25_q = {
     "name": "Yassin et al. (2025)",
     "func": null,
     "func_re": null,
-    "description": `This equation is based on the Xu and Zhang (2009) equation, but it uses a larger dataset and simplifies the model somewhat by removing the factor for mode of failure and factor for "low" erodibility. This equation is the most robust and accurate of the models, but it is still prone to large errors in some cases.`,
+    "description": `This equation is a simple equation that uses height and volume of water, but also includes a "high erodibility" adjustment factor. It is the most robust and accurate of the models, but it is still prone to large errors in some cases.`,
     "mean": -0.0174,
     "stdev": 0.3635,
     "mean_re": -0.0174,
@@ -222,12 +218,133 @@ ya25_q.func = function(dam) {
 
 ya25_q.func_re = ya25_q.func // recalibration is not available for this equation
 
-const eqn_map = new Map();
-eqn_map.set("Fr95", fr95_q);
-eqn_map.set("We96", we96_q);
-eqn_map.set("Xu09", xu09_q);
-eqn_map.set("Ho14", ho14_q);
-eqn_map.set("Az15", az15_q);
-eqn_map.set("Fr16", fr16_q);
-eqn_map.set("Zh20", zh20_q);
-eqn_map.set("Ya25", ya25_q);
+const q_eqn_map = new Map();
+q_eqn_map.set("Fr95", fr95_q);
+q_eqn_map.set("We96", we96_q);
+q_eqn_map.set("Xu09", xu09_q);
+q_eqn_map.set("Ho14", ho14_q);
+q_eqn_map.set("Az15", az15_q);
+q_eqn_map.set("Fr16", fr16_q);
+q_eqn_map.set("Zh20", zh20_q);
+q_eqn_map.set("Ya25", ya25_q);
+
+// T eqns
+
+var fr95_t = {
+    name: "Froehlich (1995)",
+    func: null,
+    func_re: null,
+    description: `Placeholder for Froehlich (1995) equation for time to failure.`,
+    "mean": -0.0997,
+    "stdev": 0.3562,
+    "mean_re": -0.0079,
+    "stdev_re": 0.3235
+}
+
+fr95_t.func = (dam) => {
+    return 3.84 * (dam.V_w/10**6)**0.53 * dam.H_b**-0.90;
+}
+
+fr95_t.func_re = (dam) => {
+    return 0.026 * dam.V_w**0.37 * dam.H_b**-0.78;
+}
+
+var fr08_t = {
+    name: "Froehlich (2008)",
+    func: null,
+    func_re: null,
+    description: `Placeholder for Froehlich (2008) equation for time to failure.`,
+    "mean": -0.0684,
+    "stdev": 0.3410,
+    "mean_re": -0.0185,
+    "stdev_re": 0.3273
+}
+
+fr08_t.func = (dam) => {
+    return 63.2 * (dam.V_w / 9.81 / dam.H_b**2)**0.5 / 3600;
+}
+
+fr08_t.func_re = (dam) => {
+    return 0.045 * 9.81**-0.5 * dam.V_w**0.39 * dam.H_b**-0.68;
+}
+
+var xu09_t = {
+    name: "Xu and Zhang (2009)",
+    func: null,
+    func_re: null,
+    description: `Placeholder for Xu and Zhang (2009) equation for time to failure.`,
+    "mean": 0.1456,
+    "stdev": 0.3495,
+    "mean_re": 0.0192,
+    "stdev_re": 0.3194,
+}
+
+xu09_t.func = (dam) => {
+    // Xu and Zhang (2009) equation for time to failure
+    var kE = 1.0; // Erodibility factor
+    if (dam.erodibility === "high") {
+        kE = 0.58;
+    } else if (dam.erodibility === "low") {
+        kE = 3.11;
+    }
+    return 0.01122 * kE * dam.H_d**0.654 * dam.V_w**0.415 * dam.H_w**-1.246;
+}
+
+xu09_t.func_re = (dam) => {
+    var kE = 1.0; // Erodibility factor
+    if (dam.erodibility === "high") {
+        kE = 0.78;
+    } else if (dam.erodibility === "low") {
+        kE = 3.3;
+    }
+    return 0.043 * kE * dam.H_d**0.35 * dam.V_w**0.29 * dam.H_w**-0.86
+}
+
+zh20_t = {
+    name: "Zhong et al. (2020)",
+    func: null,
+    func_re: null,
+    description: `Placeholder for Zhong et al. (2020) equation for time to failure.`,
+    "mean": 0.1088,
+    "stdev": 1.8251,
+    "mean_re": 0.0232,
+    "stdev_re": 0.3075
+}
+
+zh20_t.func = (dam) => {
+    // homogenous
+    c0 = 0.56
+    c1 = -0.85
+    c2 = -0.32
+    c3 = Math.exp(-0.2)
+    if (dam.type == 'core-wall') {
+        c0 = 1.52
+        c1 = -11.36 
+        c2 = -0.43
+        c3 = Math.exp(-1.57)
+    }
+    return (dam.V_w**(1/3) / dam.H_w)**c0 * (dam.H_w / dam.H_b)**c1 * dam.H_d**c2 * c3
+}
+
+zh20_t.func_re = (dam) => {
+    // homogenous
+    c0 = 0.025
+    c1 = 0.36
+    c2 = -0.22
+    c3 = 0.40
+    c4 = 0.40
+    if (dam.type == 'core-wall') {
+        c0 = .0086
+        c1 = .45 
+        c2 = -0.11
+        c3 = -1.24
+        c4 = 0.47
+    }
+   return c0 * dam.V_w**c1 * dam.H_w**c2 * dam.H_b**c3 * dam.H_d**c4
+}
+
+const t_eqn_map = new Map();
+t_eqn_map.set("Fr95", fr95_t);
+t_eqn_map.set("Fr08", fr08_t);
+t_eqn_map.set("Xu09", xu09_t);
+t_eqn_map.set("Zh20", zh20_t);
