@@ -167,7 +167,7 @@ fr16_q.func_re = (dam) => {
 }
 
 var zh20_q = {
-    "name": "Zhang et al. (2020)",
+    "name": "Zhong et al. (2020)",
     "func": null,
     "func_re": null,
     "description": `This equation separates homogenous-fill and core-wall dams in its calibration,
